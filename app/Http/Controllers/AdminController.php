@@ -20,7 +20,7 @@ class AdminController extends Controller
         ]);
         if (Auth::guard('admin')->attempt(['email' => $input['email'],'password'=> $input['password']]))
         {
-            return redirect('/');
+            return view('admin.admin_dash');
         }
         else
         {

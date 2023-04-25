@@ -20,7 +20,7 @@ class ClinicController extends Controller
         ]);
         if (Auth::guard('clinic')->attempt(['email' => $input['email'],'password'=> $input['password']]))
         {
-            return redirect('/');
+            return view('clinic.clinic_dash');
         }
         else
         {

@@ -20,7 +20,7 @@ class CompanyController extends Controller
         ]);
         if (Auth::guard('company')->attempt(['email' => $input['email'],'password'=> $input['password']]))
         {
-            return redirect('/');
+            return view('company.company_dash');
         }
         else
         {

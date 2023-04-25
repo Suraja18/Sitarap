@@ -20,7 +20,7 @@ class UserController extends Controller
         ]);
         if (Auth::guard('users')->attempt(['email' => $input['email'],'password'=> $input['password']]))
         {
-            return redirect('/');
+            return view('user.user_dash');
         }
         else
         {
