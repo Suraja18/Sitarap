@@ -35,10 +35,13 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::get('/admin',[AdminController::class,'showForm']);
+Route::get('/admin/admin_dash',[AdminController::class,'showAdmin']);
+Route::get('/admin/company',[AdminController::class,'companymanage'])->name('admin.company');
 Route::get('/users',[UserController::class,'showForm']);
 Route::get('/clinic',[ClinicController::class,'showForm']);
 Route::get('/company',[CompanyController::class,'showForm']);
 Route::post('/admin/login',[AdminController::class,'checkLogin'])->name('admin.login');
+
 Route::post('/users/login',[UserController::class,'checkLogin'])->name('users.login');
 Route::post('/clinic/login',[ClinicController::class,'checkLogin'])->name('clinic.login');
 Route::post('/company/login',[CompanyController::class,'checkLogin'])->name('company.login');

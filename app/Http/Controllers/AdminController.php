@@ -32,4 +32,26 @@ class AdminController extends Controller
         Auth::guard('admin')->logout();
         return redirect('/');
     }
+    public function showAdmin()
+    {
+        if (Auth::guard('admin'))
+        {
+            return view('admin.admin_dash');
+        }
+        else
+        {
+            return redirect()->back();
+        }
+    }
+    public function companymanage()
+    {
+        if (Auth::guard('admin'))
+        {
+            return view('admin.companymanage');
+        }
+        else
+        {
+            return redirect()->back();
+        }
+    }
 }
