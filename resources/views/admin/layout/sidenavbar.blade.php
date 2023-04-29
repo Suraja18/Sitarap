@@ -38,7 +38,7 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Company Components:</h6>
             <a class="collapse-item" href="{{route('admin.company')}}">Add Company</a>
-            <a class="collapse-item" href="#">View Company</a>
+            <a class="collapse-item" href="{{route('admin.view_company')}}">View Company</a>
         </div>
     </div>
 </li>

@@ -20,24 +20,30 @@
             <!-- Main Content -->
             <div id="content">
                  @include('admin.layout.adminnav')
+                 @if(session()->has('message'))
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                        {{session()->get('message')}}
+                    </div>
+                 @endif
                 <div class="center-body">
                     <div class="registration-form">
-                        <form method="POST" action="#">
+                        <form method="POST" action="{{route('admin.add_company')}}">
                             @csrf
                             <div class="form-icon">
                                 <span><i class="fa fa-user"></i></span>
                             </div>
                             <div class="form-group">
                                 Username  <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                                <input type="text" class="form-control item" id="username" placeholder="Username" required>
+                                <input type="text" class="form-control item" name="name" id="username" placeholder="Username" required>
                             </div>
                             <div class="form-group">
                                 Password  <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                                <input type="password" class="form-control item" id="password" placeholder="Password" required>
+                                <input type="password" class="form-control item" id="password" name="pass" placeholder="Password" required>
                             </div>
                             <div class="form-group">
                                 Email  <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                                <input type="text" class="form-control item" id="email" placeholder="Email" required>
+                                <input type="text" class="form-control item" id="email" name="email" placeholder="Email" required>
                             </div>
                             <!--
                             <div class="form-group">
@@ -62,7 +68,7 @@
                                 </div>
                         -->
                             <div class="form-group">
-                                <button type="button" class="btn btn-block create-account">Create Company</button>
+                                <Input type="Submit" value="Create Company" class="btn btn-block create-account">
                             </div>
                         </form>
                     </div>

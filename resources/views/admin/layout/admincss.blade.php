@@ -13,3 +13,4 @@
         rel="stylesheet">
 
     <link href="{{asset('adminpublic/css/style2.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css />

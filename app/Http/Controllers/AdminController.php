@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\Models\Company;
 
 class AdminController extends Controller
 {
@@ -53,5 +54,34 @@ class AdminController extends Controller
         {
             return redirect()->back();
         }
+    }
+    public function viewcompany()
+    {
+        if (Auth::guard('admin'))
+        {
+            $company = company::all();
+            return view('admin.viewcompany',compact('company'));
+        }
+        else
+        {
+            return redirect()->back();
+        }
+    }
+    public function addcompany(Request $request)
+    {
+        $comp = new company;
+        $comp->name=$request->name;
+        $comp->email=$request->email;
+        $pass=$request->pass;
+        $passhash=bcrypt($pass);
+        $comp->password=$passhash;
+        $comp->save();
+        return redirect()->back()->with('message','New Company has been created!!');
+    }
+    public function delcompany($id)
+    {
+        $company = company::find($id);
+        $company->delete();
+        return redirect()->back()->with('message','Company has been Deleted!!');
     }
 }
