@@ -34,15 +34,15 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('admin',[AdminController::class,'showForm']);
-Route::get('users',[UserController::class,'showForm']);
-Route::get('clinic',[ClinicController::class,'showForm']);
-Route::get('company',[CompanyController::class,'showForm']);
-Route::post('admin/login',[AdminController::class,'checkLogin'])->name('admin.login');
-Route::post('users/login',[UserController::class,'checkLogin'])->name('users.login');
-Route::post('clinic/login',[ClinicController::class,'checkLogin'])->name('clinic.login');
-Route::post('company/login',[CompanyController::class,'checkLogin'])->name('company.login');
-Route::get('admin/logout',[AdminController::class,'logout'])->name('admin.logout');
-Route::get('users/logout',[UserController::class,'logout'])->name('users.logout');
-Route::get('clinic/logout',[ClinicController::class,'logout'])->name('clinic.logout');
-Route::get('company/logout',[CompanyController::class,'logout'])->name('company.logout');
+Route::get('/admin',[AdminController::class,'showForm']);
+Route::get('/users',[UserController::class,'showForm']);
+Route::get('/clinic',[ClinicController::class,'showForm']);
+Route::get('/company',[CompanyController::class,'showForm']);
+Route::post('/admin/login',[AdminController::class,'checkLogin'])->name('admin.login');
+Route::post('/users/login',[UserController::class,'checkLogin'])->name('users.login');
+Route::post('/clinic/login',[ClinicController::class,'checkLogin'])->name('clinic.login');
+Route::post('/company/login',[CompanyController::class,'checkLogin'])->name('company.login');
+Route::get('/admin/logout',[AdminController::class,'logout'])->name('admin.logout');
+Route::get('/users/logout',[UserController::class,'logout'])->name('users.logout');
+Route::get('/clinic/logout',[ClinicController::class,'logout'])->name('clinic.logout');
+Route::get('/company/logout',[CompanyController::class,'logout'])->name('company.logout');
