@@ -36,10 +36,13 @@ require __DIR__.'/auth.php';
 
 Route::get('/admin',[AdminController::class,'showForm']);
 Route::post('/admin/add_company',[AdminController::class,'addcompany'])->name('admin.add_company');
+Route::post('/company/add_token',[CompanyController::class,'addtoken'])->name('company.add_token');
 Route::get('/admin/admin_dash',[AdminController::class,'showAdmin']);
 Route::get('/admin/company',[AdminController::class,'companymanage'])->name('admin.company');
+Route::get('/company/token',[CompanyController::class,'tokenmanage'])->name('company.token');
 Route::get('/admin/view_company',[AdminController::class,'viewcompany'])->name('admin.view_company');
 Route::get('/admin/del_company/{id}',[AdminController::class,'delcompany'])->name('admin.del_company');
+Route::get('/company/del_token/{id}',[CompanyController::class,'deltoken'])->name('company.del_token');
 Route::get('/users',[UserController::class,'showForm']);
 Route::get('/clinic',[ClinicController::class,'showForm']);
 Route::get('/company',[CompanyController::class,'showForm']);

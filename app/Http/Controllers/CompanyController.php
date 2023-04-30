@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Token;
 use Auth;
 
 class CompanyController extends Controller
@@ -31,5 +32,23 @@ class CompanyController extends Controller
     {
         Auth::guard('company')->logout();
         return redirect('/');
+    }
+    public function tokenmanage()
+    {
+        $token = token::all();
+        return view('company.tokenmanage',compact('token'));
+    }
+    public function addtoken(Request $request)
+    {
+        $token = new token;
+        $token->token_code=$request->name;
+        $token->save();
+        return redirect()->back()->with('message','New Token has been created!!');
+    }
+    public function deltoken($id)
+    {
+        $token = token::find($id);
+        $token->delete();
+        return redirect()->back()->with('message','Token has been Deleted!!');
     }
 }
