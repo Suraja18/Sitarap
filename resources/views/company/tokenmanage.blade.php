@@ -54,7 +54,7 @@
                                                     <td>{{$tok->token_code}}</td>
                                                     <td>
                                                         <ul class="action-list">
-                                                            <li><a onclick="return confirm('Are you sure to delete this token?')" href="{{route('company.del_token',$tok->id)}}" class="btn btn-danger"><i class="fa fa-times"></i></a></li>
+                                                            <li><a onclick="confirmation(event)" href="{{route('company.del_token',$tok->id)}}" class="btn btn-danger"><i class="fa fa-times"></i></a></li>
                                                         </ul>
                                                     </td>
                                                 </tr>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\Company;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminController extends Controller
 {
@@ -21,6 +22,7 @@ class AdminController extends Controller
         ]);
         if (Auth::guard('admin')->attempt(['email' => $input['email'],'password'=> $input['password']]))
         {
+            Alert::success('Login Successful!');
             return view('admin.admin_dash');
         }
         else
@@ -76,12 +78,14 @@ class AdminController extends Controller
         $passhash=bcrypt($pass);
         $comp->password=$passhash;
         $comp->save();
+        Alert::success('New Company has been Created!');
         return redirect()->back()->with('message','New Company has been created!!');
     }
     public function delcompany($id)
     {
         $company = company::find($id);
         $company->delete();
+        Alert::warning('Company has been Deleted!');
         return redirect()->back()->with('message','Company has been Deleted!!');
     }
 }

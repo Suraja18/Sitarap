@@ -20,6 +20,7 @@ class ClinicController extends Controller
         ]);
         if (Auth::guard('clinic')->attempt(['email' => $input['email'],'password'=> $input['password']]))
         {
+            Alert::success('Login Successful!');
             return view('clinic.clinic_dash');
         }
         else

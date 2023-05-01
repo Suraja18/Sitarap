@@ -201,3 +201,5 @@
 
 </nav>
 <!-- End of Topbar -->
+
+@include('sweetalert::alert')

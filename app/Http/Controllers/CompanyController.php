@@ -7,6 +7,7 @@ use App\Models\Token;
 use App\Models\Clinic;
 use App\Models\User;
 use Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CompanyController extends Controller
 {
@@ -23,6 +24,7 @@ class CompanyController extends Controller
         ]);
         if (Auth::guard('company')->attempt(['email' => $input['email'],'password'=> $input['password']]))
         {
+            Alert::success('Login Successful!');
             return view('company.company_dash');
         }
         else
@@ -45,12 +47,14 @@ class CompanyController extends Controller
         $token = new token;
         $token->token_code=$request->name;
         $token->save();
+        Alert::success('New Token has been Created!');
         return redirect()->back()->with('message','New Token has been created!!');
     }
     public function deltoken($id)
     {
         $token = token::find($id);
         $token->delete();
+        Alert::warning('Token has been Deleted!');
         return redirect()->back()->with('message','Token has been Deleted!!');
     }
 
@@ -72,6 +76,7 @@ class CompanyController extends Controller
         $passhash=bcrypt($pass);
         $clinic->password=$passhash;
         $clinic->save();
+        Alert::success('New Clinic has been Created!');
         return redirect()->back()->with('message','New Clinic has been created!!');
     }
 
@@ -86,6 +91,7 @@ class CompanyController extends Controller
     {
         $clinic = clinic::find($id);
         $clinic->delete();
+        Alert::warning('Clinic has been Deleted!');
         return redirect()->back()->with('message','Clinic has been Deleted!!');
     }
 
@@ -107,6 +113,7 @@ class CompanyController extends Controller
         $passhash=bcrypt($pass);
         $user->password=$passhash;
         $user->save();
+        Alert::success('New Users has been Created!');
         return redirect()->back()->with('message','New Users has been created!!');
     }
 
@@ -121,6 +128,7 @@ class CompanyController extends Controller
     {
         $users = user::find($id);
         $users->delete();
+        Alert::warning('Users has been Deleted!');
         return redirect()->back()->with('message','Users has been Deleted!!');
     }
 }

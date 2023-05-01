@@ -20,6 +20,7 @@ class UserController extends Controller
         ]);
         if (Auth::guard('users')->attempt(['email' => $input['email'],'password'=> $input['password']]))
         {
+            Alert::success('Login Successful!');
             return view('user.user_dash');
         }
         else
