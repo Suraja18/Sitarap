@@ -6,6 +6,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClinicController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\Admin;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -36,13 +38,21 @@ require __DIR__.'/auth.php';
 
 Route::get('/admin',[AdminController::class,'showForm']);
 Route::post('/admin/add_company',[AdminController::class,'addcompany'])->name('admin.add_company');
+Route::post('/company/add_clinic',[CompanyController::class,'addclinic'])->name('company.add_clinic');
+Route::post('/company/add_user',[CompanyController::class,'adduser'])->name('company.add_user');
 Route::post('/company/add_token',[CompanyController::class,'addtoken'])->name('company.add_token');
-Route::get('/admin/admin_dash',[AdminController::class,'showAdmin']);
+
 Route::get('/admin/company',[AdminController::class,'companymanage'])->name('admin.company');
+Route::get('/company/clinic',[CompanyController::class,'clinicmanage'])->name('company.clinic');
+Route::get('/company/user',[CompanyController::class,'usermanage'])->name('company.user');
 Route::get('/company/token',[CompanyController::class,'tokenmanage'])->name('company.token');
 Route::get('/admin/view_company',[AdminController::class,'viewcompany'])->name('admin.view_company');
+Route::get('/company/view_clinic',[CompanyController::class,'viewclinic'])->name('company.view_clinic');
+Route::get('/company/view_user',[CompanyController::class,'viewuser'])->name('company.view_user');
 Route::get('/admin/del_company/{id}',[AdminController::class,'delcompany'])->name('admin.del_company');
 Route::get('/company/del_token/{id}',[CompanyController::class,'deltoken'])->name('company.del_token');
+Route::get('/company/del_clinic/{id}',[CompanyController::class,'delclinic'])->name('company.del_clinic');
+Route::get('/company/del_user/{id}',[CompanyController::class,'deluser'])->name('company.del_user');
 Route::get('/users',[UserController::class,'showForm']);
 Route::get('/clinic',[ClinicController::class,'showForm']);
 Route::get('/company',[CompanyController::class,'showForm']);
@@ -55,3 +65,9 @@ Route::get('/admin/logout',[AdminController::class,'logout'])->name('admin.logou
 Route::get('/users/logout',[UserController::class,'logout'])->name('users.logout');
 Route::get('/clinic/logout',[ClinicController::class,'logout'])->name('clinic.logout');
 Route::get('/company/logout',[CompanyController::class,'logout'])->name('company.logout');
+Route::get('/admin/admin_dash',[AdminController::class,'showAdmin']);
+
+/*
+Route::middleware(['admin'])->group(function () {
+    Route::get('/admin/admin_dash',[AdminController::class,'showAdmin'])->name('admin_dash');
+});*/

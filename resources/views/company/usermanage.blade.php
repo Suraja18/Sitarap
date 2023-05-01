@@ -28,7 +28,7 @@
                  @endif
                 <div class="center-body">
                     <div class="registration-form">
-                        <form method="POST" action="{{route('company.add_clinic')}}">
+                        <form method="POST" action="{{route('company.add_user')}}">
                             @csrf
                             <div class="form-icon">
                                 <span><i class="fa fa-user"></i></span>
@@ -49,11 +49,11 @@
                                 <input type="password" class="form-control item" id="password" name="company_id" value="{{$comp}}" placeholder="Password" hidden>
                             </div>
                             <div class="form-group">
-                                <span><label>Token Code :</label></span><br/>
-                                    <select style="height:35px;" name="token" required>
-                                        <option value="" selected="">Select Token</option>
-                                        @foreach($token as $tok)
-                                        <option value="{{$tok->token_code}}">{{$tok->token_code}}</option>
+                                <span><label>Clinic :</label></span><br/>
+                                    <select style="height:35px;" name="clinic" required>
+                                        <option value="" selected="">Select Clinic</option>
+                                        @foreach($clinics as $clinic)
+                                        <option value="{{$clinic->name}}">{{$clinic->name}}</option>
                                         @endforeach
                                     </select>
                                 
@@ -81,7 +81,7 @@
                                 </div>
                         -->
                             <div class="form-group">
-                                <Input type="Submit" value="Create Clinic" class="btn btn-block create-account">
+                                <Input type="Submit" value="Create User" class="btn btn-block create-account">
                             </div>
                         </form>
                     </div>

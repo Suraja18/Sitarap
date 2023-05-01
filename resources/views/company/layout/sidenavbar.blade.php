@@ -41,8 +41,8 @@
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Clinic Components:</h6>
-            <a class="collapse-item" href="#">Add Clinic</a>
-            <a class="collapse-item" href="#">View Clinic</a>
+            <a class="collapse-item" href="{{route('company.clinic')}}">Add Clinic</a>
+            <a class="collapse-item" href="{{route('company.view_clinic')}}">View Clinic</a>
         </div>
     </div>
 </li>
@@ -58,8 +58,8 @@
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Employees Components:</h6>
-            <a class="collapse-item" href="#">Add Employees</a>
-            <a class="collapse-item" href="#">View Employees</a>
+            <a class="collapse-item" href="{{route('company.user')}}">Add Employees</a>
+            <a class="collapse-item" href="{{route('company.view_user')}}">View Employees</a>
         </div>
     </div>
 </li>

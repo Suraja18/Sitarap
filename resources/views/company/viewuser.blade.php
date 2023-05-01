@@ -35,7 +35,7 @@
                                 <div class="panel-heading">
                                     <div class="row">
                                         <div class="col-sm-12 col-xs-12">
-                                            <a href="{{route('company.clinic')}}" class="btn btn-sm btn-primary pull-left"><i class="fa fa-plus-circle"></i> Add New</a>
+                                            <a href="{{route('company.user')}}" class="btn btn-sm btn-primary pull-left"><i class="fa fa-plus-circle"></i> Add New</a>
                                         </div>
                                     </div>
                                 </div>
@@ -46,21 +46,21 @@
                                                 <th>ID</th>
                                                 <th>Name</th>
                                                 <th>Email</th>
-                                                <th>Token</th>
+                                                <th>Clinic</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($clinics as $clin)
+                                        @foreach($users as $clin)
                                             <tr>
                                                 <td>{{$clin->id}}</td>
                                                 <td>{{$clin->name}}</td>
                                                 <td>{{$clin->email}}</td>
-                                                <td>{{$clin->token}}</td>
+                                                <td>{{$clin->clinic}}</td>
                                                 <td>
                                                     <ul class="action-list">
                                                         <li><a href="#" class="btn btn-primary"><i class="fa fa-pencil-alt"></i></a></li>
-                                                        <li><a onclick="return confirm('Are you sure to delete this company?')" href="{{route('company.del_clinic',$clin->id)}}" class="btn btn-danger"><i class="fa fa-times"></i></a></li>
+                                                        <li><a onclick="return confirm('Are you sure to delete this company?')" href="{{route('company.del_user',$clin->id)}}" class="btn btn-danger"><i class="fa fa-times"></i></a></li>
                                                     </ul>
                                                 </td>
                                             </tr>

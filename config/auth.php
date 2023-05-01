@@ -46,15 +46,15 @@ return [
         ],
         'admin' => [
             'driver' => 'session',
-            'provider' => 'admin',
+            'provider' => 'admins',
         ],
         'clinic' => [
             'driver' => 'session',
-            'provider' => 'clinic',
+            'provider' => 'clinics',
         ],
         'company' => [
             'driver' => 'session',
-            'provider' => 'company',
+            'provider' => 'companys',
         ],
     ],
 
@@ -80,15 +80,15 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-        'admin' => [
+        'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
         ],
-        'clinic' => [
+        'clinics' => [
             'driver' => 'eloquent',
             'model' => App\Models\Clinic::class,
         ],
-        'company' => [
+        'companys' => [
             'driver' => 'eloquent',
             'model' => App\Models\Company::class,
         ],
@@ -121,6 +121,24 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'clinics' => [
+            'provider' => 'clinics',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'companys' => [
+            'provider' => 'companys',
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,
