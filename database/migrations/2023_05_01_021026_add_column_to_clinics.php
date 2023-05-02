@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::table('clinics', function (Blueprint $table) {
             $table->string('token')->nullable()->after('email');
             $table->string('company_id')->nullable()->after('password');
-            $table->string('isclinic')->default(1);
         });
     }
 
@@ -26,7 +25,6 @@ return new class extends Migration
         Schema::table('clinics', function (Blueprint $table) {
             $table->dropColumn('token');
             $table->dropColumn('company_id');
-            $table->dropColumn('isclinic');
         });
     }
 };

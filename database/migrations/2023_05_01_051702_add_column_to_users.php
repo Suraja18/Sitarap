@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('clinic')->nullable()->after('email');
             $table->string('company_id')->nullable()->after('password');
-            $table->string('isusers')->default(1);
         });
     }
 
@@ -26,7 +25,6 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('clinic');
             $table->dropColumn('company_id');
-            $table->dropColumn('isusers');
         });
     }
 };

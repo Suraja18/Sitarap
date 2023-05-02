@@ -38,22 +38,26 @@ require __DIR__.'/auth.php';
 
 #Admin Route
 Route::get('/admin',[AdminController::class,'showForm'])->name('admin');
-
+Route::post('/admin/login',[AdminController::class,'checkLogin'])->name('admin.login');
 #Route::get('/admin/admin_dash',[AdminController::class,'showAdmin']);
 
 
 
 #Company
 Route::get('/company',[CompanyController::class,'showForm'])->name('company');
+Route::post('/company/login',[CompanyController::class,'checkLogin'])->name('company.login');
 
 
 #Users
 Route::get('/users',[UserController::class,'showForm'])->name('users');
+Route::post('/users/login',[UserController::class,'checkLogin'])->name('users.login');
+
 
 
 
 #Clinic
 Route::get('/clinic',[ClinicController::class,'showForm'])->name('clinic');
+Route::post('/clinic/login',[ClinicController::class,'checkLogin'])->name('clinic.login');
 
 
 
@@ -65,7 +69,6 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/admin/company',[AdminController::class,'companymanage'])->name('admin.company');
     Route::get('/admin/view_company',[AdminController::class,'viewcompany'])->name('admin.view_company');
     Route::get('/admin/del_company/{id}',[AdminController::class,'delcompany'])->name('admin.del_company');
-    Route::post('/admin/login',[AdminController::class,'checkLogin'])->name('admin.login');
     Route::get('/admin/logout',[AdminController::class,'logout'])->name('admin.logout');
 });
 
@@ -81,16 +84,13 @@ Route::middleware(['company'])->group(function () {
     Route::get('/company/del_token/{id}',[CompanyController::class,'deltoken'])->name('company.del_token');
     Route::get('/company/del_clinic/{id}',[CompanyController::class,'delclinic'])->name('company.del_clinic');
     Route::get('/company/del_user/{id}',[CompanyController::class,'deluser'])->name('company.del_user');
-    Route::post('/company/login',[CompanyController::class,'checkLogin'])->name('company.login');
     Route::get('/company/logout',[CompanyController::class,'logout'])->name('company.logout');
 });
 
 Route::middleware(['clinic'])->group(function () {
-    Route::post('/clinic/login',[ClinicController::class,'checkLogin'])->name('clinic.login');
     Route::get('/clinic/logout',[ClinicController::class,'logout'])->name('clinic.logout');
 });
 
 Route::middleware(['user'])->group(function () {
     Route::get('/users/logout',[UserController::class,'logout'])->name('users.logout');
-    Route::post('/users/login',[UserController::class,'checkLogin'])->name('users.login');
 });
