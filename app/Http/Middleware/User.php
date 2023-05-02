@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-class Company
+class User
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,10 @@ class Company
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!Auth::guard('company')->check())
+        if(!Auth::guard('users')->check())
         {
-            return redirect('company');
+            return redirect('users');
         }
-        return $next($request);
+        return $next($request); 
     }
 }

@@ -18,7 +18,7 @@ class Admin
     {
         if(!Auth::guard('admin')->check())
         {
-            abort(code: 403);
+            return redirect('admin');
         }
         return $next($request);
     }
